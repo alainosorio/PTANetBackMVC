@@ -1,0 +1,14 @@
+﻿global using Asp.Versioning;
+global using Asp.Versioning.Builder;
+global using Asp.Versioning.Conventions;
+global using Microsoft.AspNetCore.Diagnostics;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+global using Microsoft.Extensions.Diagnostics.HealthChecks;
+global using Retailer.Client.Model;
+global using Retailer.Routes;
+global using Retailer.Service;
+global using Retailer.Setup;
+global using System.Net;
+global using System.Text.Json;
+global using System.Threading.RateLimiting;
+global using static System.Net.Mime.MediaTypeNames;

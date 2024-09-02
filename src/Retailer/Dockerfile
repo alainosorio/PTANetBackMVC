@@ -12,19 +12,19 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0-preview AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/Microservice/Microservice.csproj", "src/Microservice/"]
-RUN dotnet restore "./src/Microservice/Microservice.csproj"
+COPY ["src/Retailer/Retailer.csproj", "src/Retailer/"]
+RUN dotnet restore "./src/Retailer/Retailer.csproj"
 COPY . .
-WORKDIR "/src/src/Microservice"
-RUN dotnet build "./Microservice.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/src/Retailer"
+RUN dotnet build "./Retailer.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Microservice.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Retailer.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Microservice.dll"]
+ENTRYPOINT ["dotnet", "Retailer.dll"]

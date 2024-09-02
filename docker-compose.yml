@@ -1,0 +1,6 @@
+services:
+  retailer:
+    image: ${DOCKER_REGISTRY-}retailer
+    build:
+      context: .
+      dockerfile: src/Retailer/Dockerfile
