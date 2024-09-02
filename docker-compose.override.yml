@@ -1,11 +1,40 @@
 services:
   retailer:
+    container_name: retailer
     environment:
+      - ALICUNDE_RETAILER_SQL_MIGRATIONS=${ALICUNDE_RETAILER_SQL_MIGRATIONS}
+      - ALICUNDE_RETAILER_SQL_SERVICE=${ALICUNDE_RETAILER_SQL_SERVICE}
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - CORS__ORIGIN=${CORS__ORIGIN}
+      - DOCKER_ASPNETCORE_ENVIRONMENT=Container
     ports:
       - "9080:8080"
+    networks:
+      - alicunde-network
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: storage-sqlserver
+    hostname: storage-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - DOCKER_ASPNETCORE_ENVIRONMENT=Container
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+    ports:
+      - "1433:1433"
+    networks:
+      - alicunde-network
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    restart: always
+
+networks:
+  alicunde-network:
+    external: true
+
+volumes:
+  sqlserver-data:

@@ -8,6 +8,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Retailer.Client\Retailer.Client.csproj" />
+    <ProjectReference Include="..\Retailer.Storage.Service\Retailer.Storage.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Query\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.0" />
   </ItemGroup>
 
 </Project>

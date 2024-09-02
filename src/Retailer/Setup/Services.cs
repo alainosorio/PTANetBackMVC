@@ -7,13 +7,24 @@ public static class Services
     public static IServiceCollection ConfigureAppServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IRetailerService, RetailerService>();
+        services.AddScoped<IStorageService, StorageService>();
 
         return services;
     }
 
-    public static IServiceCollection ConfigureAppSettings(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        // TODO: Add app settings configuration
+        services.AddDbContext<RetailerDbContext>(options =>
+        {
+            var env = Environment.GetEnvironmentVariable("DOCKER_ASPNETCORE_ENVIRONMENT");
+
+            var connectionString = env == "Container"
+                ? Environment.GetEnvironmentVariable("ALICUNDE_RETAILER_SQL_SERVICE")
+                : Environment.GetEnvironmentVariable("ALICUNDE_RETAILER_SQL_MIGRATIONS");
+
+            options.UseSqlServer(connectionString);
+        });
+
         return services;
     }
 
@@ -77,7 +88,7 @@ public static class Services
         services.AddHealthChecks()
             .AddCheck<Liveness>("liveness", HealthStatus.Unhealthy, tags: ["liveness"])
             .AddCheck<Startup>("startup", HealthStatus.Unhealthy, tags: ["startup"]);
-            //.AddCheck<AzureRedisCacheReadyness>("arc-readyness", HealthStatus.Unhealthy, tags: ["readiness"]);
+        //.AddCheck<AzureRedisCacheReadyness>("arc-readyness", HealthStatus.Unhealthy, tags: ["readiness"]);
 
         return services;
     }
