@@ -34,6 +34,13 @@ For more details and alternatives, refer to the following link: [https://github.
 - MSSQL_SA_PASSWORD
     - SQL Server sa password
 
+### Running db migrations
+1. Restore/Build the solution
+2. Ensure sql docker-compose is running
+3. Using visual studio, open the package manager console
+4. Run the following command:
+    `Update-Database`
+
 ### Running the Project
 1. Install Docker
 2. Create the network by running the following command:
