@@ -4,6 +4,7 @@ global using Asp.Versioning.Conventions;
 global using AutoMapper;
 global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+global using Microsoft.Data.SqlClient;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
 global using Retailer.Client.Model;

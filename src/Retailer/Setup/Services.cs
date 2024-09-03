@@ -88,7 +88,8 @@ public static class Services
 
         services.AddHealthChecks()
             .AddCheck<Liveness>("liveness", HealthStatus.Unhealthy, tags: ["liveness"])
-            .AddCheck<Startup>("startup", HealthStatus.Unhealthy, tags: ["startup"]);
+            .AddCheck<Startup>("startup", HealthStatus.Unhealthy, tags: ["startup"])
+            .AddCheck<SqlServerHealthCheck>("sqlserver_readyness", tags: ["readiness"]);
         //.AddCheck<AzureRedisCacheReadyness>("arc-readyness", HealthStatus.Unhealthy, tags: ["readiness"]);
 
         return services;

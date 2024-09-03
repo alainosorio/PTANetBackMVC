@@ -1,7 +1,5 @@
 ﻿namespace Retailer.Setup;
 
-// TODO: SQL Server Readyness
-
 public class Liveness : IHealthCheck
 {
     public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
@@ -23,5 +21,26 @@ public class Startup : IHealthCheck
         return Task.FromResult(init >= end
             ? HealthCheckResult.Unhealthy("Startup check failed")
             : HealthCheckResult.Healthy("Startup check succeeded"));
+    }
+}
+
+public class SqlServerHealthCheck : IHealthCheck
+{
+    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var env = Environment.GetEnvironmentVariable("ALICUNDE_RETAILER_SQL_SERVICE");
+
+            using var connection = new SqlConnection(env);
+            
+            await connection.OpenAsync(cancellationToken);
+
+            return HealthCheckResult.Healthy("SQL Server is healthy.");
+        }
+        catch (SqlException ex)
+        {
+            return HealthCheckResult.Unhealthy("SQL Server is unhealthy.", ex);
+        }
     }
 }
