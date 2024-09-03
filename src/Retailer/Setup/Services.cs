@@ -75,8 +75,7 @@ public static class Services
     {
         services.AddStackExchangeRedisCache(_ =>
         {
-            _.Configuration = configuration.GetSection("REDIS:URL").Value;
-            _.InstanceName = configuration.GetSection("REDIS:INSTANCE").Value;
+            _.Configuration = configuration.GetSection("REDIS_CACHE").Value;
         });
 
         return services;
@@ -84,13 +83,10 @@ public static class Services
 
     public static IServiceCollection ConfigureHealthChecks(this IServiceCollection services)
     {
-        //TODO: Add health checks for SQL
-
         services.AddHealthChecks()
             .AddCheck<Liveness>("liveness", HealthStatus.Unhealthy, tags: ["liveness"])
-            .AddCheck<Startup>("startup", HealthStatus.Unhealthy, tags: ["startup"])
-            .AddCheck<SqlServerHealthCheck>("sqlserver_readyness", tags: ["readiness"]);
-        //.AddCheck<AzureRedisCacheReadyness>("arc-readyness", HealthStatus.Unhealthy, tags: ["readiness"]);
+            .AddCheck<SqlServerHealthCheck>("sqlserver_readyness", HealthStatus.Unhealthy, tags: ["readiness"])
+            .AddCheck<Startup>("startup", HealthStatus.Unhealthy, tags: ["startup"]);
 
         return services;
     }

@@ -24,15 +24,15 @@ public class Startup : IHealthCheck
     }
 }
 
-public class SqlServerHealthCheck : IHealthCheck
+public class SqlServerHealthCheck(IConfiguration configuration) : IHealthCheck
 {
     public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
     {
         try
         {
-            var env = Environment.GetEnvironmentVariable("ALICUNDE_RETAILER_SQL_SERVICE");
+            var connectionString = configuration.GetSection("ALICUNDE_RETAILER_SQL_SERVICE").Value;
 
-            using var connection = new SqlConnection(env);
+            using var connection = new SqlConnection(connectionString);
             
             await connection.OpenAsync(cancellationToken);
 
