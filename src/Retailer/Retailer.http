@@ -1,11 +1,16 @@
 @Port = 9080
 @Retailer_HostAddress = http://localhost:{{Port}}
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFsYWluIiwic3ViIjoiYWxhaW4iLCJqdGkiOiI3MmZkOWM5ZiIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUwMTQiLCJodHRwczovL2xvY2FsaG9zdDo3MDMyIl0sIm5iZiI6MTcyNTM3MTI1NiwiZXhwIjoxNzMzMjMzNjU2LCJpYXQiOjE3MjUzNzEyNTYsImlzcyI6ImRvdG5ldC11c2VyLWp3dHMifQ.TpvfZtVC0vrugjgNKHbTtAybAFq3AbfXUQ5VKRCNmsY
 
 POST {{Retailer_HostAddress}}/api/sync-retailers?api-version=1.0
+Authorization: Bearer {{Token}}
+Content-Type: application/json
 
 ###
 
 @id = DK-10900
 GET {{Retailer_HostAddress}}/api/retailers/{{id}}?api-version=1.0
+Authorization: Bearer {{Token}}
+Content-Type: application/json
 
 ###

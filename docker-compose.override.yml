@@ -8,6 +8,7 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - CORS__ORIGIN=${CORS__ORIGIN}
       - DOCKER_ASPNETCORE_ENVIRONMENT=Container
+      - REDIS_CACHE=${REDIS_CACHE}
     ports:
       - "9080:8080"
     networks:
@@ -32,9 +33,22 @@ services:
       - sqlserver-data:/var/opt/mssql
     restart: always
 
+  redis:
+    image: redis:latest
+    container_name: redis-cache
+    command: ["redis-server", "--bind", "redis", "--port", "6379"]
+    ports:
+      - "6379:6379"
+    networks:
+      - alicunde-network
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
 networks:
   alicunde-network:
     external: true
 
 volumes:
+  redis_data:
   sqlserver-data:

@@ -17,6 +17,7 @@ public static class Get
 
             return Results.Ok(response);
         })
+        .AllowAnonymous()
         .WithApiVersionSet(versionSet)
         .MapToApiVersion(1.0)
         .WithTags("retailer")

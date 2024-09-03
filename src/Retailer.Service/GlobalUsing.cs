@@ -1,5 +1,6 @@
 ﻿global using MediatR;
 global using Microsoft.Extensions.Caching.Distributed;
+global using Retailer.Client;
 global using Retailer.Client.Model;
 global using Retailer.Service.Command;
 global using Retailer.Service.Query;

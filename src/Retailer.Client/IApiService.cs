@@ -1,4 +1,4 @@
-﻿namespace Retailer.Service;
+﻿namespace Retailer.Client;
 
 public interface IApiService
 {

@@ -7,6 +7,7 @@ global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.Data.SqlClient;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
+global using Retailer.Client;
 global using Retailer.Client.Model;
 global using Retailer.Routes;
 global using Retailer.Service;

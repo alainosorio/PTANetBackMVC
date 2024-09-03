@@ -11,6 +11,10 @@ builder.Services
     .ConfigureRateLimit()
     .ConfigureRedis(builder.Configuration);
 
+
+builder.Services.AddAuthentication().AddJwtBearer();
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 var versionSet = app.NewApiVersionSet()

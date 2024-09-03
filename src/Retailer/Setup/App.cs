@@ -8,6 +8,9 @@ public static class App
 
         app.UseExceptionMiddleware();
 
+        app.UseAuthentication();
+        app.UseAuthorization();
+
         app.MapRoutes(versionSet);
 
         app.MapHealthChecks("/liveness", new HealthCheckOptions
