@@ -1,3 +1,5 @@
+docker network create alicunde-network
+
 # Prueba Técnica para candidatos
 
 ## Descripción

@@ -15,5 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        - name: Print Hello World
-          run: echo "Hello, World!"
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+    - name: Restore dependencies
+      run: dotnet restore Alicunde.Retailer.sln
+    - name: Build
+      run: dotnet build Alicunde.Retailer.sln --no-restore
+    - name: Test
+      run: dotnet test ./src/Retailer.Service.UnitTest --no-build --verbosity normal
