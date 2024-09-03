@@ -11,9 +11,11 @@ public static class Get
 
     private static void Retailer(WebApplication app, ApiVersionSet versionSet)
     {
-        app.MapGet("api/retailers/{id}", async(IRetailerService service, string id) =>
+        app.MapGet("api/retailers/{id}", async (IRetailerService service, string id) =>
         {
             var response = await service.GetRetailerById(id);
+
+            app.Logger.LogInformation("Retrieved retailer with ID {RetailerId}: {RetailerResponse}", id, response);
 
             return Results.Ok(response);
         })

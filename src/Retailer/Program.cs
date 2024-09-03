@@ -3,11 +3,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddOpenApi()
     .ConfigureAppDependencies()
-    .ConfigureAppServices(builder.Configuration)
+    .ConfigureAppServices()
     .ConfigureCors(builder.Configuration)
-    .ConfigureDbContext(builder.Configuration)
+    .ConfigureDbContext()
     .ConfigureHealthChecks()
-    .ConfigureHttpClient(builder.Configuration)
+    .ConfigureHttpClient()
     .ConfigureRateLimit()
     .ConfigureRedis(builder.Configuration);
 

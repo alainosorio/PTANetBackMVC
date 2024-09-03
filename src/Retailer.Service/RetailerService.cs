@@ -12,7 +12,7 @@ public class RetailerService(IApiService apiService, IMediator mediator, IDistri
         {
             return JsonSerializer.Deserialize<Retail>(cachedData)!;
         }
-        
+
         var response = await mediator.Send(new GetByIdQuery { Id = id });
 
         var serializedResponse = JsonSerializer.Serialize(response);

@@ -33,7 +33,7 @@ public class SqlServerHealthCheck(IConfiguration configuration) : IHealthCheck
             var connectionString = configuration.GetSection("ALICUNDE_RETAILER_SQL_SERVICE").Value;
 
             using var connection = new SqlConnection(connectionString);
-            
+
             await connection.OpenAsync(cancellationToken);
 
             return HealthCheckResult.Healthy("SQL Server is healthy.");

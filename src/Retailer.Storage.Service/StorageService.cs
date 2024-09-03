@@ -16,7 +16,7 @@ public class StorageService(RetailerDbContext dbContext, IMapper mapper) : IStor
 
         // Perform a bulk existence check for items that have the same Country and Code
         var existingItems = await dbContext.Retails.AsNoTracking().ToListAsync();
-        
+
         var itemsToCompare = existingItems.Where(i => itemKeys.Contains(new { i.Country, i.Code }));
 
         // Filter out the items that already exist in the database

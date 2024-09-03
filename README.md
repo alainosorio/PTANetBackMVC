@@ -1,47 +1,46 @@
-docker network create alicunde-network
+## Alicunde.Retailer
+### Description
+#### Tech Stack
+- AutoMapper
+- CQRS pattern
+- Docker
+    - Redis
+    - SQL Server
+    - Minimal API
+- Entity Framework
+- GitHub Actions
+- Fluent Validation
+- Health checks
+- MediatR
+- Moq
+- .NET 9 preview (scheduled for release in November 2024)
+- Open API
+- Refit
+- Jwt Auth setup
 
-# Prueba Técnica para candidatos
+This solution does not include Swagger, but you can view the API documentation at http://localhost:9080/openapi/v1.json. 
+Microsoft has decided to discontinue support for Swagger in .NET 9. 
+For more details and alternatives, refer to the following link: [https://github.com/dotnet/aspnetcore/issues/54599](https://github.com/dotnet/aspnetcore/issues/54599)
 
-## Descripción
+### Environment variables
+- ALICUNDE_RETAILER_SQL_MIGRATIONS
+    - Sql connection string for running migrations (localhost)
+- ALICUNDE_RETAILER_SQL_SERVICE
+    - Sql connection string for the service inside docker compose(storage-sqlserver)
+- CORS__ORIGIN
+    - Allowed origins (localhost)
+- REDIS_CACHE
+    - Redis connection string (redis-cache)
+- MSSQL_SA_PASSWORD
+    - SQL Server sa password
 
-Este repositorio contiene una prueba técnica para candidatos que deseen unirse a nuestro equipo de desarrollo backend y frontend. El objetivo de la prueba es evaluar las habilidades de los candidatos en el desarrollo de aplicaciones utilizando tecnologías como .NET, C#, SQL Server, MVC...
+### Running the Project
+1. Install Docker
+2. Create the network by running the following command:
+    `docker network create alicunde-network`
+3. Navigate to the docker-compose.yml container folder and run `docker-compose up --build`
+4. Open your browser and navigate to [http://localhost:9080/openapi/v1.json](http://localhost:9080/openapi/v1.json) to access the API documentation.
+5. Use Reatiler.http file located in src/Reatiler to test the API.
 
-## Instrucciones
-
-1. Realizar un programa en .NET - C# que cumpla con los siguientes requisitos:
-    - Haz un fork de este proyecto
-    - Consumir la siguiente API: [https://api.opendata.esett.com/](https://api.opendata.esett.com/). Escoge sólo 1 servicio cualquiera de los proporcionados por la API.
-    - Almacenar la información obtenida en la base de datos. (usa SQL Server en contenedor de docker para esto)
-    - Implementar un controlador que permita filtrar por Primary Key en la base de datos.
-    - Construir una API REST con Swagger que permita visualizar los datos almacenados en la base de datos.
-    - Usar contenedores Docker para DDBB y la propia App
-    - Usa arquitectura MVC (sólo API imagina que existe un segundo proyecto con el frontend, por tanto las vistas serán DTOs)
-    - Haz un pull request con tu nombre completo y comenta lo que creas necesario al evaluador técnico.
-    - Elige entre implementar CRUD o CQRS
-
-### Criterios de evaluación:
-
-Se valorará positivamente (pero no es obligatorio cumplir con todos estos puntos):
-
-1. El uso de código limpio y buenas prácticas de programación tanto en el frontend como en el backend.
-2. Utilizar código generado a mano en lugar de depender excesivamente de herramientas de generación automática.
-3. Hacer commits frecuentes y bien explicados durante el desarrollo.
-4. Demostrar conocimientos en patrones de diseño, tanto en el frontend como en el backend.
-5. Gestion correcta de los secretos como cadenas de conexión, usuarios, passwords...
-6. Uso del inglés en código y comentarios
-7. Uso de elementos de monitoreo y observabilidad como ILogger
-8. Uso de Eventos
-9. Manejo de excepciones con patron monad
-10. Pruebas de test
-
-## Tecnologías utilizadas
-
-- .NET - C#
-- SQL Server
-- MVC
-
-## Estructura del repositorio
-
-No hay restricciones específicas sobre la estructura del repositorio. Los candidatos son libres de organizar su código de la manera que consideren más apropiada. Sin embargo, se recomienda seguir las convenciones de nomenclatura y estructura de proyecto estándar.
-
-¡Buena suerte!
+### Code diagram
+![alt text](image.png)

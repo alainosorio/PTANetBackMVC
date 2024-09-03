@@ -4,7 +4,7 @@ public static class Services
 {
     private const string apiEndpoint = "https://api.opendata.esett.com";
 
-    public static IServiceCollection ConfigureAppServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection ConfigureAppServices(this IServiceCollection services)
     {
         services.AddScoped<IRetailerService, RetailerService>();
         services.AddScoped<IStorageService, StorageService>();
@@ -12,7 +12,7 @@ public static class Services
         return services;
     }
 
-    public static IServiceCollection ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection ConfigureDbContext(this IServiceCollection services)
     {
         services.AddDbContext<RetailerDbContext>(options =>
         {
@@ -42,7 +42,7 @@ public static class Services
         return services;
     }
 
-    public static IServiceCollection ConfigureHttpClient(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection ConfigureHttpClient(this IServiceCollection services)
     {
         services.AddHttpClient<IApiService, ApiService>(_ =>
         {

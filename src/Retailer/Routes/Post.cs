@@ -15,6 +15,8 @@ public static class Post
         {
             var response = await service.Sync();
 
+            app.Logger.LogInformation("Sync operation completed successfully");
+
             return Results.Ok(response);
         })
         .WithApiVersionSet(versionSet)
