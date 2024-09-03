@@ -4,14 +4,9 @@ public class RetailerService(IApiService apiService, IMediator mediator) : IReta
 {
     private const string retailers = "EXP01/Retailers";
 
-    public Task<IEnumerable<Retail>> CreateRetailer(IEnumerable<Retail> retailers)
+    public async Task<Retail> GetRetailerById(string id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<Retail> GetRetailerById(int id)
-    {
-        throw new NotImplementedException();
+        return await mediator.Send(new GetByIdQuery { Id = id });
     }
 
     public async Task<IEnumerable<Retail>> Sync()

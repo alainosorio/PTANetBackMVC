@@ -11,9 +11,11 @@ public static class Get
 
     private static void Retailer(WebApplication app, ApiVersionSet versionSet)
     {
-        app.MapGet("api/retailers/{id}", (string id) =>
+        app.MapGet("api/retailers/{id}", async(IRetailerService service, string id) =>
         {
-            return Results.Ok(id);
+            var response = await service.GetRetailerById(id);
+
+            return Results.Ok(response);
         })
         .WithApiVersionSet(versionSet)
         .MapToApiVersion(1.0)

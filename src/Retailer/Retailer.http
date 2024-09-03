@@ -1,7 +1,11 @@
 @Port = 9080
 @Retailer_HostAddress = http://localhost:{{Port}}
 
-
 POST {{Retailer_HostAddress}}/api/sync-retailers?api-version=1.0
+
+###
+
+@id = DK-10900
+GET {{Retailer_HostAddress}}/api/retailers/{{id}}?api-version=1.0
 
 ###

@@ -30,6 +30,7 @@ public static class Services
 
     public static IServiceCollection ConfigureAppDependencies(this IServiceCollection services)
     {
+        services.AddAutoMapper(typeof(Program).Assembly);
         services.AddMediatR(_ => _.RegisterServicesFromAssembly(MediatorAssembly.Assembly));
 
         services.AddApiVersioning(_ =>
