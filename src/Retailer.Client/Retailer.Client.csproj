@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Refit" Version="7.1.2" />
+    <PackageReference Include="System.Text.Json" Version="9.0.0-preview.7.24405.7" />
   </ItemGroup>
 
 </Project>
