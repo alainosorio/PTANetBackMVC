@@ -2,5 +2,5 @@
 
 public class RetailerDbContext(DbContextOptions<RetailerDbContext> options) : DbContext(options)
 {
-    public DbSet<Retail> Retails { get; set; }
+    public virtual DbSet<Retail> Retails { get; set; }
 }

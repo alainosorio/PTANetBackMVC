@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailer.Service", "src\Ret
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailer.Service.UnitTest", "src\Retailer.Service.UnitTest\Retailer.Service.UnitTest.csproj", "{BCEBC83F-A6A8-495E-887B-37F6EC573FC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailer.UnitTest", "src\Retailer.UnitTest\Retailer.UnitTest.csproj", "{7F376F7B-55A9-47B9-B114-7ACAB5B269FC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailer.Client", "src\Retailer.Client\Retailer.Client.csproj", "{97AE3EE1-5512-47BC-AC71-F233A22D8481}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailer.Storage.Sqlserver", "src\Retailer.Storage.Sqlserver\Retailer.Storage.Sqlserver.csproj", "{E3F1F1AB-9384-44DF-BDB8-5279BDA7DF14}"
@@ -41,10 +39,6 @@ Global
 		{BCEBC83F-A6A8-495E-887B-37F6EC573FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCEBC83F-A6A8-495E-887B-37F6EC573FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCEBC83F-A6A8-495E-887B-37F6EC573FC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F376F7B-55A9-47B9-B114-7ACAB5B269FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F376F7B-55A9-47B9-B114-7ACAB5B269FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F376F7B-55A9-47B9-B114-7ACAB5B269FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F376F7B-55A9-47B9-B114-7ACAB5B269FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{97AE3EE1-5512-47BC-AC71-F233A22D8481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97AE3EE1-5512-47BC-AC71-F233A22D8481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97AE3EE1-5512-47BC-AC71-F233A22D8481}.Release|Any CPU.ActiveCfg = Release|Any CPU
