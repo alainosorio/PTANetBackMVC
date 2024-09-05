@@ -1,22 +1,23 @@
 ## Alicunde.Retailer
 ### Description
 #### Tech Stack
+- .NET 9 preview (scheduled for release in November 2024)
 - AutoMapper
 - CQRS pattern
 - Docker
+    - Minimal API
     - Redis
     - SQL Server
-    - Minimal API
 - Entity Framework
-- GitHub Actions
 - Fluent Validation
+- GitHub Actions
 - Health checks
+- Jwt Auth setup
 - MediatR
 - Moq
-- .NET 9 preview (scheduled for release in November 2024)
 - Open API
+- Query parameter api versioning: api-version=1.0
 - Refit
-- Jwt Auth setup
 
 This solution does not include Swagger, but you can view the API documentation at http://localhost:9080/openapi/v1.json. 
 Microsoft has decided to discontinue support for Swagger in .NET 9. 
